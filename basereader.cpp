@@ -24,6 +24,12 @@ BaseReader::~BaseReader()
     m_database.close();
 }
 
+BaseReader &BaseReader::getInstance()
+{
+    static BaseReader instance;
+    return instance;
+}
+
 bool BaseReader::getCountriesList(QVector<Country> *countriesVector)
 {
     if(!countriesVector)
@@ -65,6 +71,7 @@ bool BaseReader::getCountriesList(QVector<Country> *countriesVector)
 
     for (Country &country : *countriesVector)
         getOperatorsByCounry(country);
+    return true;
 }
 
 void BaseReader::saveOperatorToBase(Operators *newOperator, bool isNewOperator)
@@ -157,4 +164,5 @@ bool BaseReader::getOperatorsByCounry(Country &country)
         operators.operatorName = query.value(ix_name).toString();
         country.operatorsList.push_back(operators);
     }
+    return true;
 }

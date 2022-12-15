@@ -49,8 +49,7 @@ void EditOperator::setSaveButtonEnablet(const QString &)
 
         if(ui->mccLineEdit->text().length() == 3)
         {
-            BaseReader base;
-            if(!pix.load(QString(":/icon/Countries/%1.png").arg(base.getCounryCodeByMcc(ui->mccLineEdit->text().toInt()))))
+            if(!pix.load(QString(":/icon/Countries/%1.png").arg(BaseReader::getInstance().getCounryCodeByMcc(ui->mccLineEdit->text().toInt()))))
                 pix.load(":/icon/Operators/unnown.png");
             ui->labelImageCountry->setPixmap(pix);
         }

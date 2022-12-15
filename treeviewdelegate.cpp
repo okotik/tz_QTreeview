@@ -99,8 +99,7 @@ void TreeViewDelegate::saveNewDataTobase(const QString &name, const QString &mcc
     newOperator.mnc = mnc.toInt();
     newOperator.mcc = mcc.toInt();
     newOperator.operatorName = name;
-    BaseReader base;
-    base.saveOperatorToBase(&newOperator, isNewItem);
+    BaseReader::getInstance().saveOperatorToBase(&newOperator, isNewItem);
     if(isNewItem)
         emit dataChamged();
 }

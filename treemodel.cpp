@@ -1,6 +1,7 @@
 #include "treemodel.h"
 
 #include <QStringList>
+#include "basereader.h"
 
 TreeModel::TreeModel(QStandardItemModel *parent)
     : QStandardItemModel(parent)
@@ -28,8 +29,7 @@ void TreeModel::updateModel()
 void TreeModel::setupModelData()
 {
     QVector<Country> modelData;
-    BaseReader base;
-    if(!base.getCountriesList(&modelData))
+    if(!BaseReader::getInstance().getCountriesList(&modelData))
         return;
 
     for (Country data : modelData)

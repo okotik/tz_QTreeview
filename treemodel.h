@@ -2,7 +2,6 @@
 #define TREEMODEL_H
 
 #include <QStandardItemModel>
-#include "basereader.h"
 
 class TreeModel : public QStandardItemModel
 {
